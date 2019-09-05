@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -8,20 +8,29 @@ import {connect} from 'react-redux';
 
 class InfoPage extends Component {
   componentDidMount() {
-    this.props.dispatch({ type:'FETCH_SHELF'})
+    this.props.dispatch({ type: 'FETCH_SHELF' })
   }
-  render () {
-    return <p>{ JSON.stringify(this.props.state) }</p>
+  render() {
+    return (
+    <main><p>{JSON.stringify(this.props.state)}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.props.state.shelf && this.props.state.shelf.map(item => <tr key={item.description}>
+          <td>{item.description}</td>
+          <td><img src={item.image_url} alt={item.description}/></td>
+          </tr>)}
+        </tbody>
+      </table>
+    </main>
+    )
   }
 }
-
-// const InfoPage = () => (
-//   <div>
-//     <p>
-//       Shelf Page
-//     </p>
-//   </div>
-// );
 
 const mapStateToProps = state => ({
   state
