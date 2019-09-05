@@ -34,12 +34,19 @@ class InfoPage extends Component {
     });
   };
 
+  handleDelete = (id) => {
+    this.props.dispatch({
+      type: 'DELETE_ITEM',
+      payload: id
+    })
+  }
+
   render() {
     return (
       <div>
         <p>{JSON.stringify(this.props.state)}</p>
-        <div>
-          <h2>Shelf</h2>
+        <h2>Shelf</h2>
+        <div className="shelf">
           <form onSubmit={this.addItem}>
             <input
               placeholder="item description"
@@ -50,30 +57,31 @@ class InfoPage extends Component {
               onChange={event => this.handleChange('image', event)}
             />
             <button type="submit">Add Item</button>
+
           </form>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Image</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.state.shelf &&
+                  this.props.state.shelf.map(item => (
+                    <tr key={item.description}>
+                      <td>{item.description}</td>
+                      <td>
+                        <img src={item.image_url} alt={item.description} />
+                      </td>
+                      <td>{item.user_id === this.props.state.user.id && <button onClick={() => this.handleDelete(item.id)}>Delete</button>}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-        <main>
-          <p>{JSON.stringify(this.props.state)}</p>
-          <table>
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Image</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.state.shelf &&
-                this.props.state.shelf.map(item => (
-                  <tr key={item.description}>
-                    <td>{item.description}</td>
-                    <td>
-                      <img src={item.image_url} alt={item.description} />
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </main>
       </div>
     );
   }
