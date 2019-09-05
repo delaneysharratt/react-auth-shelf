@@ -18,10 +18,12 @@ class InfoPage extends Component {
     this.props.dispatch({ type: 'FETCH_SHELF' });
   }
 
-  onChange = (propertyName, event) => {
+  handleChange = (propertyName, event) => {
     this.setState({
-      ...this.state.item,
-      [propertyName]: event.target.value
+      item: {
+        ...this.state.item,
+        [propertyName]: event.target.value
+      }
     });
   };
 
@@ -35,6 +37,8 @@ class InfoPage extends Component {
   };
 
   render() {
+    console.log(this.state.item);
+
     return (
       <div>
         <p>{JSON.stringify(this.props.state)}</p>
@@ -42,18 +46,23 @@ class InfoPage extends Component {
           <h2>Shelf</h2>
           <form onSubmit={this.addItem}>
             <input
+              type="text"
               placeholder="item description"
-              onChange={event => this.handleChange('description', event)}
+              onChange={event => {
+                this.handleChange('description', event);
+              }}
             />
             <input
+              type="text"
               placeholder="image url"
-              onChange={event => this.handleChange('image', event)}
+              onChange={event => {
+                this.handleChange('image', event);
+              }}
             />
             <button type="submit">Add Item</button>
           </form>
         </div>
         <main>
-          <p>{JSON.stringify(this.props.state)}</p>
           <table>
             <thead>
               <tr>
