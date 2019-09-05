@@ -47,10 +47,10 @@ class InfoPage extends Component {
     console.log(this.state.item);
 
     return (
-      <div>
-        <p>{JSON.stringify(this.props.state)}</p>
-        <h2>Shelf</h2>
         <div className="shelf">
+
+          <h2>Shelf</h2>
+
           <form onSubmit={this.addItem}>
             <input
               type="text"
@@ -67,10 +67,10 @@ class InfoPage extends Component {
               }}
             />
             <button type="submit">Add Item</button>
-
           </form>
+
           <div>
-            <table>
+            <table className="shelfTable">
               <thead>
                 <tr>
                   <th>Description</th>
@@ -91,28 +91,7 @@ class InfoPage extends Component {
               </tbody>
             </table>
           </div>
-        </div>
-        <main>
-          <table>
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Image</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.state.shelf &&
-                this.props.state.shelf.map(item => (
-                  <tr key={item.description}>
-                    <td>{item.description}</td>
-                    <td>
-                      <img src={item.image_url} alt={item.description} />
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </main>
+
       </div>
     );
   }

@@ -1,54 +1,76 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0px;
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+.nav {
+  text-align: left;
 }
 
 .alert {
-    background-color: #ff4545;
-    margin: 50px;
+  background-color: #ff4545;
+  margin: 50px;
 }
 
 .shelf {
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
+  text-align: center;
+  background-color: #dbd5d5;
+  width: 75%;
+  height: 100%;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 2px;
+}
+
+.shelfTable {
+  text-align: left;
+  margin: auto;
+  padding: 2em;
+}
+
+.shelfTable th,
+td {
+  padding: 0.5em;
 }
 
 input {
-    margin: 5px;
-    margin-bottom: 10px;
+  margin: 5px;
+  margin-bottom: 10px;
 }
 
-.log-in, .log-out, .register {
+.log-in,
+.log-out,
+.register {
   background-color: #00acb0;
   border-radius: 4px;
   color: #f8f8f8;
   min-height: 50px;
   min-width: 100px;
-  outline:0;
+  outline: 0;
   cursor: pointer;
 }
 
-.log-in:hover, .log-out:hover, .register:hover {
+.log-in:hover,
+.log-out:hover,
+.register:hover {
   background-color: #008183;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
-    background:none;
-    color:inherit;
-    border:none;
-    padding:0;
-    font: inherit;
-    outline:0;
-    border-bottom:1px solid #444; 
-    cursor: pointer;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: 0;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
 }
 
 img {
-    max-width: 50px;
-    max-height: 80px;
+  max-width: 50px;
+  max-height: 80px;
 }
