@@ -52,6 +52,28 @@ class InfoPage extends Component {
             <button type="submit">Add Item</button>
           </form>
         </div>
+        <main>
+          <p>{JSON.stringify(this.props.state)}</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Image</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.state.shelf &&
+                this.props.state.shelf.map(item => (
+                  <tr key={item.description}>
+                    <td>{item.description}</td>
+                    <td>
+                      <img src={item.image_url} alt={item.description} />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </main>
       </div>
     );
   }
